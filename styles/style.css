@@ -125,7 +125,21 @@ body{
   border: 1px solid var(--slate300);
   border-radius: 5px;
 }
-.mortgage-calculator-amount-input div{
+
+.mortgage-calculator-amount-input:hover{
+  border: 1px solid var(--slate900);
+  transition: 0.1s;
+}
+
+.mortgage-calculator-amount-input:focus-within {
+  border-color: var(--lime); 
+}
+
+.mortgage-calculator-amount-input:focus-within .peso-logo {
+  background-color: var(--lime); 
+}
+
+.mortgage-calculator-amount-input .peso-logo{
   background-color: var(--slate100);
   height: 100%;
   width: 35px;
@@ -144,6 +158,7 @@ body{
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   padding: 0 10px;
+  font-weight: 700;
 }
 
 .mortgage-calculator-amount-input input:focus{
@@ -226,8 +241,22 @@ body{
   margin-top: 5px;
   border-radius: 5px;
 }
-.mortgage-calculator-type-radio input{
- margin: 0 10px;
+.mortgage-calculator-type-radio:hover{
+  border: 1px solid var(--lime);
+  transition: 0.3s;
+  cursor: pointer;
+}
+.mortgage-calculator-type-radio:focus{
+  border: 1px solid var(--lime);
+  transition: 0.3s;
+  cursor: pointer;
+}
+.mortgage-calculator-type-radio-repayment{
+  margin: 0 10px;
+}
+
+.mortgage-calculator-type-radio-interest{
+  margin: 0 10px;
 }
 
 .mortgage-calculator-type-radio div{
@@ -243,6 +272,11 @@ body{
   display: flex;
   justify-content: start;
   align-items: start;
+  
+  transition: 0.3s;
+}
+.mortgage-calculator-type-button:hover{
+  opacity: 80%;
 }
 
 .mortgage-calculator-type-button button{
@@ -253,6 +287,7 @@ body{
   border: none;
   border-radius: 100px;
   width: 82%;
+  cursor: pointer;
 }
 
 .mortgage-calculator-type-button button img{
@@ -263,6 +298,7 @@ body{
 
 .mortgage-calculator-type-button button p{
   font-weight: 700;
+  margin-left: 5px;
 }
 .mortgage-calculator-type-button button div{
   display: flex;
