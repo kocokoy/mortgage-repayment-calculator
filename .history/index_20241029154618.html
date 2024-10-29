@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="/styles/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+  
+  <title>Frontend Mentor | Mortgage repayment calculator</title>
+</head>
+<body>
+  <div class="container">
+    <div class="container-card">
+      <div class="mortgage-calculator-side">
+        <div class="mortgage-calculator-header">
+          <p>Mortgage Calculator</p>
+          <button>Clear All</button>
+        </div>
+        <div class="mortgage-calculator-amount">
+          <p>Mortgage Amount</p>
+          <label class="mortgage-calculator-amount-input">
+            <div class="peso-logo">&#8369;</div>
+            <input type="text">
+          </label>
+          <div class="field-require-text">
+            this field is required
+          </div>
+        </div>
+        <div class="mortgage-calculator-term-and-interest">
+          <div class="mortgage-calculator-term-section">
+            <p>Mortgage Term</p>
+            <div class="mortgage-calculator-term-section-mortgage">
+              <input type="text" name="" id="">
+              <div>years</div>
+            </div>
+            <div class="field-require-text">
+              this field is required
+            </div>
+          </div>
+          <div class="mortgage-calculator-term-section">
+            <p>Interest Rate</p>
+            <div class="mortgage-calculator-term-section-mortgage">
+              <input type="text" name="" id="">
+              <div>%</div>
+            </div>
+            <div class="field-require-text">
+              this field is required
+            </div>
+          </div>
+        </div>
+        <div class="mortgage-calculator-type">
+          <p>Mortgage Type</p>
+          <label class="mortgage-calculator-type-radio">
+            <input type="radio">
+            <div>Repayment</div>
+          </label>
+          <label class="mortgage-calculator-type-radio">
+            <input type="radio">
+            <div>Interest Only</div>
+          </label>
+        </div>
+        <div class="mortgage-calculator-type-button">
+          <button>
+            <div>
+              <img src="/assets/images/icon-calculator.svg" alt="">
+              <p>Calculate Repayments</p>
+            </div>
+          </button>
+        </div>
+      </div>
+      <div class="result-side">
+        <div class="result-empty">
+          <div>
+            <img src="/assets/images/illustration-empty.svg" alt="">
+          </div>
+          <div class="result-side-title">Results shown here</div>
+          <div class="result-side-text">  Complete the form and click “calculate repayments” to see what 
+            your monthly repayments would be.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+    Coded by <a href="#">Vann Erycko C. Constantino</a>.
+  </div>
+</body>
+</html>
