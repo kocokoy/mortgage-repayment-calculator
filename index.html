@@ -24,7 +24,7 @@
           <p>Mortgage Amount</p>
           <label class="mortgage-calculator-amount-input">
             <div class="peso-logo">&#8369;</div>
-            <input type="text">
+            <input type="text" class="jsMortageAmount">
           </label>
           <div class="field-require-text">
             this field is required
@@ -34,7 +34,7 @@
           <div class="mortgage-calculator-term-section">
             <p>Mortgage Term</p>
             <div class="mortgage-calculator-term-section-mortgage">
-              <input type="text" name="" id="">
+              <input type="text" name="" id="" class="jsMortgageTerm">
               <div>years</div>
             </div>
             <div class="field-require-text">
@@ -44,7 +44,7 @@
           <div class="mortgage-calculator-term-section">
             <p>Interest Rate</p>
             <div class="mortgage-calculator-term-section-mortgage">
-              <input type="text" name="" id="">
+              <input type="text" name="" id="" class="jsMortgageInterest">
               <div>%</div>
             </div>
             <div class="field-require-text">
@@ -55,16 +55,16 @@
         <div class="mortgage-calculator-type">
           <p>Mortgage Type</p>
           <label class="mortgage-calculator-type-radio">
-            <input class="mortgage-calculator-type-radio-repayment" type="radio">
+            <input class="mortgage-calculator-type-radio-repayment jsRepaymentRadio" type="radio">
             <div>Repayment</div>
           </label>
           <label class="mortgage-calculator-type-radio">
-            <input class="mortgage-calculator-type-radio-interest"  type="radio">
+            <input class="mortgage-calculator-type-radio-interest jsRepaymentInterest"  type="radio">
             <div>Interest Only</div>
           </label>
         </div>
-        <div class="mortgage-calculator-type-button">
-          <button>
+        <div class="mortgage-calculator-button">
+          <button class="jsCalculateRepayments">
             <div>
               <img src="/assets/images/icon-calculator.svg" alt="">
               <p>Calculate Repayments</p>

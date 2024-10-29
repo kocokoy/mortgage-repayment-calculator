@@ -198,6 +198,7 @@ body{
   border: none;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  accent-color: green;
 }
 .mortgage-calculator-term-section-mortgage div{
   width: auto;
@@ -246,11 +247,11 @@ body{
   transition: 0.3s;
   cursor: pointer;
 }
-.mortgage-calculator-type-radio:focus{
+.mortgage-calculator-type-radio-clicked{
   border: 1px solid var(--lime);
   transition: 0.3s;
-  cursor: pointer;
 }
+
 .mortgage-calculator-type-radio-repayment{
   margin: 0 10px;
 }
@@ -267,7 +268,7 @@ body{
 
 /* Mortgage Calculator Type Button */
 
-.mortgage-calculator-type-button{
+.mortgage-calculator-button{
   margin-top: 30px;
   display: flex;
   justify-content: start;
@@ -275,11 +276,11 @@ body{
   
   transition: 0.3s;
 }
-.mortgage-calculator-type-button:hover{
+.mortgage-calculator-button:hover{
   opacity: 80%;
 }
 
-.mortgage-calculator-type-button button{
+.mortgage-calculator-button button{
   display: flex;
   flex-direction: row;
   background-color: var(--lime);
@@ -290,17 +291,17 @@ body{
   cursor: pointer;
 }
 
-.mortgage-calculator-type-button button img{
+.mortgage-calculator-button button img{
   margin: 0;
   display: flex;
   justify-content: center;
 }
 
-.mortgage-calculator-type-button button p{
+.mortgage-calculator-button button p{
   font-weight: 700;
   margin-left: 5px;
 }
-.mortgage-calculator-type-button button div{
+.mortgage-calculator-button button div{
   display: flex;
   justify-content: center;
   width: 100%;
