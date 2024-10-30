@@ -9,8 +9,8 @@ const interestRadioElement = document.querySelector('.jsRepaymentInterest');
 const resultSideElement = document.querySelector('.jsResultSide');
 const test = document.querySelector('.result-empty');
 
-let totalRepayment = '';
-let monthlyPayment = '';
+let totalRepayment = 0;
+let monthlyPayment = 0;
 let repaymentRadioClicked = false;
 let interestRadioClicked = false;
 
@@ -76,8 +76,8 @@ function CalcuteRepayment(amount,years,interest){
   let totalPayments = (years*months);
   let numerator = (amount * monthlyInterestRate);
   let denominator = (1 - Math.pow(1 + monthlyInterestRate,(-1*totalPayments)));
-  monthlyPayment = (numerator/denominator).toLocaleString();
-  totalRepayment =  (monthlyPayment*totalPayments).toLocaleString();
+  monthlyPayment = (numerator/denominator);
+  totalRepayment =  (monthlyPayment*totalPayments);
   displayResult();
 }
 
@@ -95,11 +95,11 @@ function displayResult(){
           <div class="result-populate-repayment">
             <div class="result-populate-repayment-monthly">
               <p>Your monthly repayments</p>
-              <div class="jsMonthlyRepayment">&#8369;${monthlyPayment}</div>
+              <div class="jsMonthlyRepayment">&#8369;${monthlyPayment.toFixed(2)}</div>
             </div>
             <div class="result-populate-repayment-total">
               <p>Total you'll repay over the term</p>
-              <div class="jsRepaymentTotal">&#8369;${totalRepayment}</div>
+              <div class="jsRepaymentTotal">&#8369;${totalRepayment.toFixed(2)}</div>
             </div>
           </div>`;
 

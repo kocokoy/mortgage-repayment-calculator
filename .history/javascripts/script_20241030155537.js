@@ -7,10 +7,9 @@ const repaymentRadioElement = document.querySelector('.jsRepaymentRadio');
 const interestRadioElement = document.querySelector('.jsRepaymentInterest');
 // result side
 const resultSideElement = document.querySelector('.jsResultSide');
-const test = document.querySelector('.result-empty');
 
-let totalRepayment = '';
-let monthlyPayment = '';
+let totalRepayment = 0;
+let monthlyPayment = 0;
 let repaymentRadioClicked = false;
 let interestRadioClicked = false;
 
@@ -76,15 +75,15 @@ function CalcuteRepayment(amount,years,interest){
   let totalPayments = (years*months);
   let numerator = (amount * monthlyInterestRate);
   let denominator = (1 - Math.pow(1 + monthlyInterestRate,(-1*totalPayments)));
-  monthlyPayment = (numerator/denominator).toLocaleString();
-  totalRepayment =  (monthlyPayment*totalPayments).toLocaleString();
+  monthlyPayment = (numerator/denominator);
+  totalRepayment =  (monthlyPayment*totalPayments);
   displayResult();
 }
 
 function displayResult(){
   const div = document.createElement('div');
   div.classList.add('result-populate');
-  div.innerHTML =  `
+  div.innerHTML = `
           <div class="result-populate-title">
             Your results
           </div>
@@ -95,17 +94,27 @@ function displayResult(){
           <div class="result-populate-repayment">
             <div class="result-populate-repayment-monthly">
               <p>Your monthly repayments</p>
-              <div class="jsMonthlyRepayment">&#8369;${monthlyPayment}</div>
+              <div class="jsMonthlyRepayment">${monthlyPayment}}</div>
             </div>
             <div class="result-populate-repayment-total">
               <p>Total you'll repay over the term</p>
-              <div class="jsRepaymentTotal">&#8369;${totalRepayment}</div>
+              <div class="jsRepaymentTotal">${totalRepayment}</div>
             </div>
           </div>`;
+          
+          let test = `<div class="result-empty">
+          <div>
+            <img src="/assets/images/illustration-empty.svg" alt="">
+          </div>
+          <div class="result-side-title">Results shown here</div>
+          <div class="result-side-text">  Complete the form and click “calculate repayments” to see what 
+            your monthly repayments would be.</div>
+        </div>`
 
   if(monthlyPayment && totalRepayment){
-    resultSideElement.innerHTML = ""; // Clear previous content
-    resultSideElement.appendChild(div); // Append the new content
-  } 
+   resultSideElement.appendChild(div);
+  }else{
+    resultSideElement.appendChild(test);
+  }
 }
 

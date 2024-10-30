@@ -7,16 +7,14 @@ const repaymentRadioElement = document.querySelector('.jsRepaymentRadio');
 const interestRadioElement = document.querySelector('.jsRepaymentInterest');
 // result side
 const resultSideElement = document.querySelector('.jsResultSide');
-const test = document.querySelector('.result-empty');
 
-let totalRepayment = '';
-let monthlyPayment = '';
+let totalRepayment = 0;
+let monthlyPayment = 0;
 let repaymentRadioClicked = false;
 let interestRadioClicked = false;
 
 
 MortgageTypeBtnClicked();
-displayResult();
 calculateButton.addEventListener('click', () => {
   const mortgageAmount =  IntegerConverter(mortgageAmountElement.value);
   const mortgageTerm =  IntegerConverter(mortgageTermElement.value);
@@ -76,15 +74,13 @@ function CalcuteRepayment(amount,years,interest){
   let totalPayments = (years*months);
   let numerator = (amount * monthlyInterestRate);
   let denominator = (1 - Math.pow(1 + monthlyInterestRate,(-1*totalPayments)));
-  monthlyPayment = (numerator/denominator).toLocaleString();
-  totalRepayment =  (monthlyPayment*totalPayments).toLocaleString();
-  displayResult();
+  monthlyPayment = (numerator/denominator);
+  totalRepayment =  (monthlyPayment*totalPayments);
+  displayResult(monthlyPayment, totalRepayment);
 }
 
-function displayResult(){
-  const div = document.createElement('div');
-  div.classList.add('result-populate');
-  div.innerHTML =  `
+function displayResult(monthlyPayment, totalRepayment){
+  ResultHTML = `<div class="result-populate">
           <div class="result-populate-title">
             Your results
           </div>
@@ -95,17 +91,16 @@ function displayResult(){
           <div class="result-populate-repayment">
             <div class="result-populate-repayment-monthly">
               <p>Your monthly repayments</p>
-              <div class="jsMonthlyRepayment">&#8369;${monthlyPayment}</div>
+              <div class="jsMonthlyRepayment">${monthlyPayment}}</div>
             </div>
             <div class="result-populate-repayment-total">
               <p>Total you'll repay over the term</p>
-              <div class="jsRepaymentTotal">&#8369;${totalRepayment}</div>
+              <div class="jsRepaymentTotal">${totalRepayment}</div>
             </div>
-          </div>`;
-
+          </div>
+        </div>`
   if(monthlyPayment && totalRepayment){
-    resultSideElement.innerHTML = ""; // Clear previous content
-    resultSideElement.appendChild(div); // Append the new content
-  } 
+   resultSideElement.appendChild(ResultHTML);
+  }
 }
 

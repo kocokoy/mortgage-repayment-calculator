@@ -5,32 +5,23 @@ const mortgageInterestElement = document.querySelector('.jsMortgageInterest');
 // radio buttons
 const repaymentRadioElement = document.querySelector('.jsRepaymentRadio');
 const interestRadioElement = document.querySelector('.jsRepaymentInterest');
-// result side
-const resultSideElement = document.querySelector('.jsResultSide');
-const test = document.querySelector('.result-empty');
-
-let totalRepayment = '';
-let monthlyPayment = '';
-let repaymentRadioClicked = false;
-let interestRadioClicked = false;
-
+let totalRepayment = 0;
 
 MortgageTypeBtnClicked();
-displayResult();
 calculateButton.addEventListener('click', () => {
   const mortgageAmount =  IntegerConverter(mortgageAmountElement.value);
   const mortgageTerm =  IntegerConverter(mortgageTermElement.value);
   const mortgageInterest =  IntegerConverter(mortgageInterestElement.value);
+  CalcuteRepayment(mortgageAmount,mortgageTerm,mortgageInterest);
 
-  if(repaymentRadioClicked){
-    console.log('test')
-    CalcuteRepayment(mortgageAmount,mortgageTerm,mortgageInterest);
-  }
 });
 
 
 
 function MortgageTypeBtnClicked(){
+  let repaymentRadioClicked = false;
+  let interestRadioClicked = false;
+  
   const repaymentParentLabel = repaymentRadioElement.parentElement;
   const interestParentLabel = interestRadioElement.parentElement;
   
@@ -72,40 +63,10 @@ function IntegerConverter(str){
 
 function CalcuteRepayment(amount,years,interest){
   let months = 12;
-  let monthlyInterestRate = ((interest/months)/100);
+  let monthlyInterestRate = (interest/months);
   let totalPayments = (years*months);
-  let numerator = (amount * monthlyInterestRate);
-  let denominator = (1 - Math.pow(1 + monthlyInterestRate,(-1*totalPayments)));
-  monthlyPayment = (numerator/denominator).toLocaleString();
-  totalRepayment =  (monthlyPayment*totalPayments).toLocaleString();
-  displayResult();
-}
-
-function displayResult(){
-  const div = document.createElement('div');
-  div.classList.add('result-populate');
-  div.innerHTML =  `
-          <div class="result-populate-title">
-            Your results
-          </div>
-          <div class="result-populate-message">
-            Your results are shown below based on the information you provided.
-            To adjust the results. edit the form and click "calculate repayments" again.
-          </div>
-          <div class="result-populate-repayment">
-            <div class="result-populate-repayment-monthly">
-              <p>Your monthly repayments</p>
-              <div class="jsMonthlyRepayment">&#8369;${monthlyPayment}</div>
-            </div>
-            <div class="result-populate-repayment-total">
-              <p>Total you'll repay over the term</p>
-              <div class="jsRepaymentTotal">&#8369;${totalRepayment}</div>
-            </div>
-          </div>`;
-
-  if(monthlyPayment && totalRepayment){
-    resultSideElement.innerHTML = ""; // Clear previous content
-    resultSideElement.appendChild(div); // Append the new content
-  } 
+  console.log(amount);
+  console.log(totalPayments);
+  console.log(monthlyInterestRate);
 }
 

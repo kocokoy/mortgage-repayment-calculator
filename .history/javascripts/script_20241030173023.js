@@ -77,7 +77,8 @@ function CalcuteRepayment(amount,years,interest){
   let numerator = (amount * monthlyInterestRate);
   let denominator = (1 - Math.pow(1 + monthlyInterestRate,(-1*totalPayments)));
   monthlyPayment = (numerator/denominator).toLocaleString();
-  totalRepayment =  (monthlyPayment*totalPayments).toLocaleString();
+  let monthlyPayments= ((numerator/denominator).toFixed(2)).toLocaleString();
+  totalRepayment =  (monthlyPayments*totalPayments).toLocaleString();
   displayResult();
 }
 

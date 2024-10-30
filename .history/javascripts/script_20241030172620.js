@@ -95,11 +95,11 @@ function displayResult(){
           <div class="result-populate-repayment">
             <div class="result-populate-repayment-monthly">
               <p>Your monthly repayments</p>
-              <div class="jsMonthlyRepayment">&#8369;${monthlyPayment}</div>
+              <div class="jsMonthlyRepayment">&#8369;${monthlyPayment.toFixed(2)}</div>
             </div>
             <div class="result-populate-repayment-total">
               <p>Total you'll repay over the term</p>
-              <div class="jsRepaymentTotal">&#8369;${totalRepayment}</div>
+              <div class="jsRepaymentTotal">&#8369;${totalRepayment.toFixed(2)}</div>
             </div>
           </div>`;
 

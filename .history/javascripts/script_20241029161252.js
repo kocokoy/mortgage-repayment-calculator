@@ -1,0 +1,1 @@
+const calculateButton = document.querySelector('.jsCalculateRepayments');
