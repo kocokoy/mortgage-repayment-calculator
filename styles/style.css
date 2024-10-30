@@ -249,11 +249,17 @@ body{
 }
 .mortgage-calculator-type-radio-clicked{
   border: 1px solid var(--lime);
+  background-color: hsla(61, 70%, 52%, 0.1);
   transition: 0.3s;
 }
 
 .mortgage-calculator-type-radio-repayment{
-  margin: 0 10px;
+  margin: 0 10px;  
+}
+
+input[type="radio"]{
+  accent-color: var(--lime);
+  border: none;
 }
 
 .mortgage-calculator-type-radio-interest{
@@ -273,11 +279,6 @@ body{
   display: flex;
   justify-content: start;
   align-items: start;
-  
-  transition: 0.3s;
-}
-.mortgage-calculator-button:hover{
-  opacity: 80%;
 }
 
 .mortgage-calculator-button button{
@@ -289,6 +290,11 @@ body{
   border-radius: 100px;
   width: 82%;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.mortgage-calculator-button button:hover{
+  opacity: 80%;
 }
 
 .mortgage-calculator-button button img{
