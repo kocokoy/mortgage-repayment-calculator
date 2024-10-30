@@ -313,7 +313,7 @@ input[type="radio"]{
   width: 100%;
 }
 
-/* Result Side */
+/* Result Side Empty */
 .result-empty{
   display: flex;
   flex-direction: column;
@@ -331,4 +331,64 @@ input[type="radio"]{
   color: var(--slate500);
   font-size: 11px;
   text-align: center;
+}
+
+/* Result Side Populate*/
+.result-populate{
+  height: 100%;
+}
+.result-populate-title{
+  color: var(--white);
+  font-weight: 500;
+  padding-bottom: 5px;
+}
+.result-populate-message{
+  color: var(--slate300);
+  font-weight: 500;
+  font-size: 10px;
+  width: 93%;
+  padding: 5px 0px;
+  line-height: 15px;
+}
+.result-populate-repayment{
+  color: var(--slate300);
+  background-color: hsl(202, 55%, 11%);
+  border-radius: 10px;
+  margin-top: 15px;
+  box-shadow:  0 -3px var(--lime);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.result-populate-repayment-monthly{
+  border-bottom: 1px solid hsla(200, 24%, 40%, 0.5);
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+.result-populate-repayment-monthly p{
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+.result-populate-repayment-monthly div{
+  font-size: 30px;
+  color: var(--lime);
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.result-populate-repayment-total{
+  width: 90%;
+}
+.result-populate-repayment-total p{
+  width: 90%;
+  font-size: 13px;
+}
+.result-populate-repayment-total div{
+  font-size: 19px;
+  color: var(--white);
+  font-weight: 500;
+  padding-bottom: 15px;
 }
