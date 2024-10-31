@@ -2,21 +2,31 @@ const calculateButton = document.querySelector('.jsCalculateRepayments');
 const mortgageAmountElement = document.querySelector('.jsMortageAmount');
 const mortgageTermElement = document.querySelector('.jsMortgageTerm');
 const mortgageInterestElement = document.querySelector('.jsMortgageInterest');
+const clearAllBtnElement = document.querySelector('.jsClearAllBtn');
 // radio buttons
 const repaymentRadioElement = document.querySelector('.jsRepaymentRadio');
 const interestRadioElement = document.querySelector('.jsRepaymentInterest');
+const repaymentParentLabel = repaymentRadioElement.parentElement;
+const interestParentLabel = interestRadioElement.parentElement;
 // result side
 const resultSideElement = document.querySelector('.jsResultSide');
 const fieldRequireElement = document.querySelectorAll('.field-require-text');
 
-let totalRepayment = '';
-let monthlyPayment = '';
-let repaymentRadioClicked = false;
-let interestRadioClicked = false;
+
+totalRepayment = '';
+monthlyPayment = '';
+repaymentRadioClicked = false;
+interestRadioClicked = false;
+months = 12;
+monthlyInterestRate = 0;
+monthlyPayments = 0;
+totalPayments = 0;
+numerator = 0;
+denominator = 0;
 
 
 MortgageTypeBtnClicked();
-displayResult();
+DisplayResult();
 calculateButton.addEventListener('click', () => {
   const mortgageAmount =  IntegerConverter(mortgageAmountElement.value);
   const mortgageTerm =  IntegerConverter(mortgageTermElement.value);
@@ -38,11 +48,12 @@ calculateButton.addEventListener('click', () => {
   }
 });
 
+clearAllBtnElement.addEventListener('click', () => {
+  ClearAllClicked();
+});
+
 
 function MortgageTypeBtnClicked(){
-  const repaymentParentLabel = repaymentRadioElement.parentElement;
-  const interestParentLabel = interestRadioElement.parentElement;
-  
   repaymentRadioElement.addEventListener('click', () =>{
     if(repaymentRadioClicked){
       repaymentParentLabel.classList.remove('mortgage-calculator-type-radio-clicked');
@@ -80,33 +91,31 @@ function IntegerConverter(str){
 }
 
 function CalcuteRepayment(amount,years,interest){
-  let months = 12;
-  let monthlyInterestRate = ((interest/months)/100);
-  let totalPayments = (years*months);
-  let numerator = (amount * monthlyInterestRate);
-  let denominator = (1 - Math.pow(1 + monthlyInterestRate,(-1*totalPayments)));
+  monthlyInterestRate = ((interest/months)/100);
+  totalPayments = (years*months);
+  numerator = (amount * monthlyInterestRate);
+  denominator = (1 - Math.pow(1 + monthlyInterestRate,(-1*totalPayments)));
   console.log(denominator);
   console.log(numerator);
-  let monthlyPayments = (numerator/denominator).toFixed(2);
+  monthlyPayments = (numerator/denominator).toFixed(2);
   monthlyPayment = Number((numerator/denominator).toFixed(2)).toLocaleString();
   totalRepayment =  Number((monthlyPayments * totalPayments).toFixed(2)).toLocaleString();
   console.log(totalRepayment);
-  displayResult();
+  DisplayResult();
 }
 
 function CalcuteInterestOnly(amount,years,interest){
-  let months = 12;
   interest /= 100;
-  let numerator = (amount * interest);
-  // let monthlyPayments = (numerator/denominator).toFixed(2);
+  numerator = (amount * interest);
   monthlyPayment = Number((numerator/months).toFixed(2)).toLocaleString();
   totalRepayment =  Number((numerator*years).toFixed(2)).toLocaleString();
   console.log(monthlyPayment);
   console.log(totalRepayment);
-  displayResult();
+  DisplayResult();
 }
 
-function displayResult(){
+function DisplayResult(){
+  emptyDiv = document.createElement('div');
   const div = document.createElement('div');
   div.classList.add('result-populate');
   div.innerHTML =  `
@@ -128,9 +137,40 @@ function displayResult(){
             </div>
           </div>`;
 
+
+  emptyDiv.classList.add('result-empty');
+  emptyDiv.innerHTML =  `
+            <img src="/assets/images/illustration-empty.svg" alt="">
+            <div class="result-side-title">Results shown here</div>
+          <div class="result-side-text">  Complete the form and click “calculate repayments” to see what 
+            your monthly repayments would be.</div>`;
+
   if(monthlyPayment && totalRepayment){
     resultSideElement.innerHTML = ""; // Clear previous content
     resultSideElement.appendChild(div); // Append the new content
-  } 
+  }else{
+    resultSideElement.innerHTML = ""; // Clear previous content
+    resultSideElement.appendChild(emptyDiv);
+  }
 }
 
+function ClearAllClicked(){
+  totalRepayment = '';
+  monthlyPayment = '';
+  repaymentRadioClicked = false;
+  interestRadioClicked = false;
+  months = 12;
+  monthlyInterestRate = 0;
+  monthlyPayments = 0;
+  totalPayments = 0;
+  numerator = 0;
+  denominator = 0;
+  mortgageAmountElement.value = '';
+  mortgageTermElement.value = '';
+  mortgageInterestElement.value = '';
+  repaymentRadioElement.checked = false;
+  repaymentParentLabel.classList.remove('mortgage-calculator-type-radio-clicked');
+  interestRadioElement.checked = false;
+  interestParentLabel.classList.remove('mortgage-calculator-type-radio-clicked');
+  DisplayResult();
+}
