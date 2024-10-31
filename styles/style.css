@@ -50,11 +50,15 @@ body{
 .field-require-text{
   margin-top: 10px;
   color: var(--red);
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 900;
   margin-bottom: 3px;
   display: none;
 }
+.field-require-text-empty{
+  display: block;
+}
+
 .mortgage-calculator-side{
   height: auto;
   width: auto;

@@ -7,7 +7,7 @@ const repaymentRadioElement = document.querySelector('.jsRepaymentRadio');
 const interestRadioElement = document.querySelector('.jsRepaymentInterest');
 // result side
 const resultSideElement = document.querySelector('.jsResultSide');
-const test = document.querySelector('.result-empty');
+const fieldRequireElement = document.querySelectorAll('.field-require-text');
 
 let totalRepayment = '';
 let monthlyPayment = '';
@@ -22,12 +22,21 @@ calculateButton.addEventListener('click', () => {
   const mortgageTerm =  IntegerConverter(mortgageTermElement.value);
   const mortgageInterest =  IntegerConverter(mortgageInterestElement.value);
 
-  if(repaymentRadioClicked){
-    console.log('test')
-    CalcuteRepayment(mortgageAmount,mortgageTerm,mortgageInterest);
+  if(!(mortgageAmount && mortgageTerm && mortgageInterest && (repaymentRadioClicked || interestRadioClicked))){
+    fieldRequireElement.forEach(element => {
+      element.classList.add('field-require-text-empty');
+    })
+  }else{
+    fieldRequireElement.forEach(element => {
+      element.classList.remove('field-require-text-empty');
+    })
+    if(repaymentRadioClicked){
+      CalcuteRepayment(mortgageAmount,mortgageTerm,mortgageInterest);
+    }else{
+      CalcuteInterestOnly(mortgageAmount,mortgageTerm,mortgageInterest);
+    }
   }
 });
-
 
 
 function MortgageTypeBtnClicked(){
@@ -76,8 +85,24 @@ function CalcuteRepayment(amount,years,interest){
   let totalPayments = (years*months);
   let numerator = (amount * monthlyInterestRate);
   let denominator = (1 - Math.pow(1 + monthlyInterestRate,(-1*totalPayments)));
-  monthlyPayment = (numerator/denominator).toLocaleString();
-  totalRepayment =  (monthlyPayment*totalPayments).toLocaleString();
+  console.log(denominator);
+  console.log(numerator);
+  let monthlyPayments = (numerator/denominator).toFixed(2);
+  monthlyPayment = Number((numerator/denominator).toFixed(2)).toLocaleString();
+  totalRepayment =  Number((monthlyPayments * totalPayments).toFixed(2)).toLocaleString();
+  console.log(totalRepayment);
+  displayResult();
+}
+
+function CalcuteInterestOnly(amount,years,interest){
+  let months = 12;
+  interest /= 100;
+  let numerator = (amount * interest);
+  // let monthlyPayments = (numerator/denominator).toFixed(2);
+  monthlyPayment = Number((numerator/months).toFixed(2)).toLocaleString();
+  totalRepayment =  Number((numerator*years).toFixed(2)).toLocaleString();
+  console.log(monthlyPayment);
+  console.log(totalRepayment);
   displayResult();
 }
 
