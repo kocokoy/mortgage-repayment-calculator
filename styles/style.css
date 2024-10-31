@@ -30,6 +30,7 @@ body{
   padding: 0;
   background-color: var(--slate100);
 }
+
 .container{
   height: 98vh;
   display: flex;
@@ -42,10 +43,12 @@ body{
   flex-direction: row;
   height: auto;
   width: 50%;
+  max-width: 600px;
   background-color: var(--white);
   border-bottom-left-radius: 13px;
   border-top-left-radius: 13px;
 }
+
 
 .field-require-text{
   margin-top: 10px;
@@ -93,8 +96,8 @@ body{
 }
 .mortgage-calculator-header p{
  margin: 0;
- font-weight: 500;
- color: var(--slate700);
+ font-weight: 900;
+ color: var(--slate900);
 }
 .mortgage-calculator-header button{
  margin: 0;
@@ -292,7 +295,7 @@ input[type="radio"]{
   color: var(--slate900);
   border: none;
   border-radius: 100px;
-  width: 82%;
+  width: 90%;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -395,4 +398,64 @@ input[type="radio"]{
   color: var(--white);
   font-weight: 500;
   padding-bottom: 15px;
+}
+
+
+@media (max-width: 1075px){
+  body{
+    margin: 0;
+    padding: 0;
+    background-color: var(--slate100);
+    height: 100vh;
+  }
+  
+.container{
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 375px;
+  /* background-color: red; */
+}
+
+.container-card{
+  height: auto;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.mortgage-calculator-term-and-interest{
+  display: flex;
+  flex-direction: column;
+  margin-top: 13px;
+}
+
+.mortgage-calculator-term-section{
+  width: 100%;
+}
+
+.mortgage-calculator-button{
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.result-side{
+  height: auto;
+  width: auto;
+  padding: 30px;
+  overflow: hidden;
+  background-color: var(--slate900);
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+  
 }
